@@ -188,7 +188,13 @@
 
       :srs/mode? false
 
-      :srs/cards-due-count nil})))
+      :srs/cards-due-count nil
+
+      ;; login, userinfo, token, ...
+      :auth/refresh-token nil
+      :auth/access-token nil
+      :auth/id-token nil
+      })))
 
 ;; block uuid -> {content(String) -> ast}
 (def blocks-ast-cache (atom (cache/lru-cache-factory {} :threshold 5000)))
@@ -1087,6 +1093,7 @@
 
 (defn logged?
   "Whether the user has logged in."
+  {:deprecated "-"}
   []
   (some? (get-name)))
 
@@ -1615,3 +1622,24 @@
 (defn get-visual-viewport-state
   []
   (:ui/visual-viewport-state @state))
+
+(defn set-auth-id-token
+  [id-token]
+  (set-state! :auth/id-token id-token))
+
+(defn set-auth-refresh-token
+  [refresh-token]
+  (set-state! :auth/refresh-token refresh-token))
+
+(defn set-auth-access-token
+  [access-token]
+  (set-state! :auth/access-token access-token))
+
+(defn get-auth-id-token []
+  (:auth/id-token @state))
+
+(defn get-auth-access-token []
+  (:auth/access-token @state))
+
+(defn get-auth-refresh-token []
+  (:auth/refresh-token @state))

@@ -10,6 +10,7 @@
             [electron.ipc :as ipc]
             [frontend.handler.notification :as notification]
             [frontend.handler.metadata :as metadata-handler]
+            [frontend.handler.user :as user]
             [frontend.ui :as ui]))
 
 (defn persist-dbs!
@@ -71,7 +72,6 @@
                      (fn []
                        (state/pub-event! [:modal/set-git-username-and-email])))
 
-
   (js/window.apis.on "getCurrentGraph"
                      (fn []
                        (when-let [graph (state/get-current-repo)]
@@ -82,7 +82,10 @@
                        (let [{:keys [payload]} (bean/->clj data)
                              payload (update payload :to keyword)]
                          (prn {:payload payload})
-                         (route-handler/redirect! payload)))))
+                         (route-handler/redirect! payload))))
+  (js/window.apis.on "loginCallback"
+                     (fn [code]
+                       (user/login-callback code))))
 
 (defn listen!
   []
