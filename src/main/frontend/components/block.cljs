@@ -2033,7 +2033,7 @@
         editor-id (str "editor-" edit-input-id)
         encrypted? (:encrypted (:block/properties block))
         slide? (:slide? config)]
-    (if (and edit? editor-box (not encrypted?))
+    (if (and edit? editor-box (not (state/enable-readmode?)) (not encrypted?))
       [:div.editor-wrapper {:id editor-id}
        (ui/catch-error
         [:p.warning "Something wrong in the editor"]

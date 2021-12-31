@@ -220,6 +220,7 @@
         editor (when textarea
                  (from-textarea textarea
                                 #js {:mode mode
+				     :readOnly (if (state/enable-readmode?) true false)
                                      :theme (str "solarized " theme)
                                      :matchBrackets lisp-like?
                                      :autoCloseBrackets true

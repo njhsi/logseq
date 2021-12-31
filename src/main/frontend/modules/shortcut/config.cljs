@@ -277,6 +277,10 @@
                                     :binding "mod+c mod+b"
                                     :fn      config-handler/toggle-ui-show-brackets!}
 
+   :ui/toggle-readmode             {:desc    "Toggle whether to enable readmode"
+                                    :binding "mod+c mod+g"
+                                    :fn      config-handler/toggle-ui-enable-readmode!}
+
    :go/search-in-page              {:desc    "Search in the current page"
                                     :binding "mod+shift+k"
                                     :fn      #(route-handler/go-to-search! :page)}
@@ -521,6 +525,7 @@
                           :editor/zoom-in
                           :editor/zoom-out
                           :ui/toggle-brackets
+			  :ui/toggle-readmode
                           :go/search-in-page
                           :go/search
                           :go/backward
@@ -660,6 +665,7 @@
     :ui/toggle-cards
     :ui/toggle-document-mode
     :ui/toggle-brackets
+    :ui/toggle-readmode
     :ui/toggle-theme
     :ui/toggle-left-sidebar
     :ui/toggle-right-sidebar

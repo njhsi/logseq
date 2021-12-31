@@ -369,6 +369,12 @@
   (not (false? (:ui/show-brackets?
                 (get (sub-config) (get-current-repo))))))
 
+;; Enable by default
+(defn enable-readmode?
+  []
+  (not (false? (:ui/enable-readmode?
+                (get (sub-config) (get-current-repo))))))
+
 (defn get-default-home
   []
   (:default-home (get-config)))

@@ -217,6 +217,20 @@
      [:div {:style {:text-align "right"}}
       (ui/render-keyboard-shortcut (shortcut-helper/gen-shortcut-seq :ui/toggle-brackets))])])
 
+(defn enable-readmode-row [t enable-readmode?]
+  [:div.it.sm:grid.sm:grid-cols-3.sm:gap-4.sm:items-start
+   [:label.block.text-sm.font-medium.leading-5.opacity-70
+    {:for "enable_readmode"}
+    (t :settings-page/enable-readmode)]
+   [:div
+    [:div.rounded-md.sm:max-w-xs
+     (ui/toggle enable-readmode?
+                config-handler/toggle-ui-enable-readmode!
+                true)]]
+   (when (not (or (util/mobile?) (mobile-util/is-native-platform?)))
+     [:div {:style {:text-align "right"}}
+      (ui/render-keyboard-shortcut (shortcut-helper/gen-shortcut-seq :ui/toggle-readmode))])])
+
 (rum/defcs switch-spell-check-row < rum/reactive
   [state t]
   (let [enabled? (state/sub [:electron/user-cfgs :spell-check])]
@@ -549,6 +563,7 @@
         enable-git-auto-push? (state/enable-git-auto-push? current-repo)
         ;; enable-block-timestamps? (state/enable-block-timestamps?)
         show-brackets? (state/show-brackets?)
+	enable-readmode? (state/enable-readmode?)
         github-token (state/sub [:me :access-token])
         cors-proxy (state/sub [:me :cors_proxy])
         logged? (state/logged?)
@@ -608,6 +623,7 @@
             (workflow-row t preferred-workflow)
             ;; (enable-block-timestamps-row t enable-block-timestamps?)
             (show-brackets-row t show-brackets?)
+            (enable-readmode-row  t enable-readmode?)	    
             (when (util/electron?) (switch-spell-check-row t))
             (outdenting-row t logical-outdenting?)
             (when-not (or (util/mobile?) (mobile-util/is-native-platform?))
