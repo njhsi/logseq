@@ -1,3 +1,9 @@
+# Customizations
+## features:
+ - encrypt/decrypt per block (in block context menu)
+ - enable read mode (in settings/editor, or Ctrl+c Ctrl+g)
+
+
 # Logseq
 
 [![latest release version](https://img.shields.io/github/v/release/logseq/logseq)](https://github.com/logseq/logseq/releases)
