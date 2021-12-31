@@ -1,4 +1,4 @@
-# Customizations
+# Customizations by njhsi
 ## features:
  - encrypt/decrypt per block (in block context menu)
  - enable read mode (in settings/editor, or Ctrl+c Ctrl+g)
