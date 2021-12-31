@@ -12,6 +12,10 @@
   (let [show-brackets? (state/show-brackets?)]
     (set-config! :ui/show-brackets? (not show-brackets?))))
 
+(defn toggle-ui-enable-readmode! []
+  (let [enable-readmode?  (state/enable-readmode?)]
+    (set-config! :ui/enable-readmode? (not enable-readmode?))))
+
 (defn toggle-logical-outdenting! []
   (js/alert "toggle-logical-outdenting!")
   (let [logical-outdenting? (state/logical-outdenting?)]

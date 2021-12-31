@@ -234,6 +234,7 @@
         :settings-page/edit-config-edn "Edit config.edn"
         :settings-page/edit-custom-css "Edit custom.css"
         :settings-page/show-brackets "Show brackets"
+        :settings-page/enable-readmode "Enable readmode"
         :settings-page/spell-checker "Spell checker"
         :settings-page/auto-updater "Auto updater"
         :settings-page/disable-sentry "Send usage data and diagnostics to Logseq"
